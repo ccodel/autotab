@@ -1,0 +1,201 @@
+{% extends '_base.html' %}
+
+{% block content %}
+ 
+  <h2 class="text-center">Manage rounds</h2>
+
+  <br>
+
+  <div class="tab">
+    <button class="tablinks" onclick="tabToRound(event, 'round1')">Round 1</button>
+    <button class="tablinks" onclick="tabToRound(event, 'round2')">Round 2</button>
+    <button class="tablinks" onclick="tabToRound(event, 'round3')">Round 3</button>
+    <button class="tablinks" onclick="tabToRound(event, 'round4')">Round 4</button>
+  </div>
+
+  <hr>
+  
+  <div id="round1" class="tabcontent text-center">
+    <h2>Round 1</h2>
+    <br>
+    <form class="text-center" enctype="multipart/form-data" action="" method ="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <div class="text-center">
+        <button class="btn btn-lg btn-success" type="submit">Create pairing</button>
+      </div>
+    </form>
+
+    <table class="text-center" style="margin-left:auto; margin-right:auto;">
+      <tr>
+        <th>Room</th>
+        <th>Pros</th>
+        <th>Def</th>
+        <th>Judge 1</th>
+        <th>Judge 2</th>
+        <th></th>
+      </tr>
+
+    {% for p in pairing_list %}
+    {% if p.round_num == 1 %}
+      <div class="container border rounded mt-2 mb-2">
+      <tr>
+        <td>{{ p.room }}</td>
+        <td>{{ p.prosecution }}</td>
+        <td>{{ p.defense }}</td>
+
+        {% if p.ballot1_score is not None %}
+        <td>{{ p.ballot1_score }}</td>
+        {% else %}
+        <td>--</td>
+        {% endif %}
+
+        {% if p.ballot2_score is not None %}
+        <td>{{ p.ballot2_score }}</td>
+        {% else %}
+        <td>--</td>
+        {% endif %}
+        <td>
+          <a class="btn btn-light" href="{{ p.get_absolute_url }}">Edit</a>
+        </td>
+      </tr>
+      </div>
+    {% endif %}
+    {% endfor %}
+    </table>
+  </div>
+
+  <div id="round2" class="tabcontent text-center">
+    <h2>Round 2</h2>
+    <br>
+    <form class="text-center" enctype="multipart/form-data" action="" method ="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <div class="text-center">
+        <button class="btn btn-lg btn-success" type="submit">Create pairing</button>
+      </div>
+    </form>
+
+    <table class="text-center" style="margin-left:auto; margin-right:auto;">
+      <tr>
+        <th>Room</th>
+        <th>Pros</th>
+        <th>Def</th>
+        <th>Judge 1</th>
+        <th>Judge 2</th>
+      </tr>
+
+    {% for p in pairing_list %}
+    {% if p.round_num == 2 %}
+      <tr>
+        <td>{{ p.room }}</td>
+        <td>{{ p.prosecution }}</td>
+        <td>{{ p.defense }}</td>
+
+        {% if p.ballot1_score is not None %}
+        <td>{{ p.ballot1_score }}</td>
+        {% else %}
+        <td>--</td>
+        {% endif %}
+
+        {% if p.ballot2_score is not None %}
+        <td>{{ p.ballot2_score }}</td>
+        {% else %}
+        <td>--</td>
+        {% endif %}
+      </tr>
+    {% endif %}
+    {% endfor %}
+    </table>
+  </div>
+
+  <div id="round3" class="tabcontent text-center">
+    <h2>Round 3</h2>
+    <br>
+    <form class="text-center" enctype="multipart/form-data" action="" method ="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <div class="text-center">
+        <button class="btn btn-lg btn-success" type="submit">Create pairing</button>
+      </div>
+    </form>
+
+    <table class="text-center" style="margin-left:auto; margin-right:auto;">
+      <tr>
+        <th>Room</th>
+        <th>Pros</th>
+        <th>Def</th>
+        <th>Judge 1</th>
+        <th>Judge 2</th>
+      </tr>
+
+    {% for p in pairing_list %}
+    {% if p.round_num == 3 %}
+      <tr>
+        <td>{{ p.room }}</td>
+        <td>{{ p.prosecution }}</td>
+        <td>{{ p.defense }}</td>
+
+        {% if p.ballot1_score is not None %}
+        <td>{{ p.ballot1_score }}</td>
+        {% else %}
+        <td>--</td>
+        {% endif %}
+
+        {% if p.ballot2_score is not None %}
+        <td>{{ p.ballot2_score }}</td>
+        {% else %}
+        <td>--</td>
+        {% endif %}
+      </tr>
+    {% endif %}
+    {% endfor %}
+    </table>
+  </div>
+
+  <div id="round4" class="tabcontent text-center">
+    <h2>Round 4</h2>
+    <br>
+    <form class="text-center" enctype="multipart/form-data" action="" method ="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <div class="text-center">
+        <button class="btn btn-lg btn-success" type="submit">Create pairing</button>
+      </div>
+    </form>
+
+    <table class="text-center" style="margin-left:auto; margin-right:auto;">
+      <tr>
+        <th>Room</th>
+        <th>Pros</th>
+        <th>Def</th>
+        <th>Judge 1</th>
+        <th>Judge 2</th>
+      </tr>
+
+    {% for p in pairing_list %}
+    {% if p.round_num == 4 %}
+      <tr>
+        <td>{{ p.room }}</td>
+        <td>{{ p.prosecution }}</td>
+        <td>{{ p.defense }}</td>
+
+        {% if p.ballot1_score is not None %}
+        <td>{{ p.ballot1_score }}</td>
+        {% else %}
+        <td>--</td>
+        {% endif %}
+
+        {% if p.ballot2_score is not None %}
+        <td>{{ p.ballot2_score }}</td>
+        {% else %}
+        <td>--</td>
+        {% endif %}
+      </tr>
+    {% endif %}
+    {% endfor %}
+    </table>
+  </div>
+
+  <br><br>
+{% endblock content %}

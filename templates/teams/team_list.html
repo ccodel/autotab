@@ -1,0 +1,40 @@
+{% extends '_base.html' %}
+
+{% load team_tags %}
+
+{% block content %}
+ 
+  <h2 class="text-center">Register a new team</h2>
+
+  <br>
+
+  <form class="text-center" enctype="multipart/form-data" action="" method ="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="text-center">
+      <button class="btn btn-lg btn-success" type="submit">Create</button>
+    </div>
+  </form>
+
+  <hr>
+
+  {% if team_list|length != 0 %}
+  <table class="text-center" style="margin-left:auto; margin-right:auto;">
+    <tr>
+      <th>School name</th>
+      <th>Team number</th>
+      <th>Display name</th>
+    </tr>
+  {% for team in team_list %}
+    <tr>
+      <td>{{ team.school_name }}</td>
+      <td>{{ team.team_number }}</td>
+      <td>{{ team.display_name }}</td>
+      <td><a class="btn btn-light" href="{{ team.get_absolute_url }}">See more</a>
+    </tr>
+  {% endfor %}
+  </table>
+
+  <br><br>
+  {% endif %}
+{% endblock content %}

@@ -1,0 +1,49 @@
+{% extends '_base.html' %}
+
+{% block content %}
+
+<div class="container text-center">
+  <h2 class="text-center">Edit a pairing</h2>
+
+  <h4>P {{ pairing.prosecution }} vs. D {{ pairing.defense }}</h4>
+
+  <form class="text-center" enctype="multipart/form-data" action="" method="post">
+    {% csrf_token %}
+    {{ ballot_form.as_p }}
+    <div class="text-center">
+      <button class="btn btn-lg btn-success" type="submit" value="ballots">Submit ballots</button>
+    </div>
+  </form>
+
+  <br><hr><br>
+  
+  <h2 class="text-center">Enter ranks</h2>
+
+  <h4>P {{ pairing.prosecution }} vs. D {{ pairing.defense }}</h4>
+
+  <form class="text-center" enctype="multipart/form-data" action="" method="post">
+    {% csrf_token %}
+    {{ ranking_form.errors }}
+    {{ ranking_form.as_p }}
+    <div class="text-center">
+      <button class="btn btn-lg btn-success" type="submit" value="rankings">Submit ranking</button>
+    </div>
+  </form>
+
+  <table class="text-center" style="margin-left:auto; margin-right:auto;">
+    <tr>
+      <th>School</th>
+      <th>Competitor</th>
+      <th>Ranks</th>
+    </tr>
+    {% for r in ranking_list %}
+    <tr>
+      <td>{{ r.team.display_name }}</td>
+      <td>{{ r.student }}</td>
+      <td>{{ r.ranks }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+
+{% endblock content %}

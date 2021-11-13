@@ -1,0 +1,104 @@
+{% extends '_base.html' %}
+
+{% load team_tags %}
+
+{% block content %}
+
+<div class="text-center">
+  <h2>{{ team.display_name }}</h2>
+
+  <table style="margin-left:auto; margin-right:auto;">
+    <tr>
+      <th></th>
+      <th>Round 1</th>
+      <th>Round 2</th>
+      <th>Round 3</th>
+      <th>Round 4</th>
+    </tr>
+
+    <tr>
+      <td>Ballots</td>
+      <td>
+      {% for p in team|pairings:1 %}
+        {{ p.ballot1_score }} | {{ p.ballot2_score }}
+      {% empty %}
+        -- | --
+      {% endfor %}
+      </td>
+      <td>
+      {% for p in team|pairings:2 %}
+        {{ p.ballot1_score }} | {{ p.ballot2_score }}
+      {% empty %}
+        -- | --
+      {% endfor %}
+      </td>
+      <td>
+      {% for p in team|pairings:3 %}
+        {{ p.ballot1_score }} | {{ p.ballot2_score }}
+      {% empty %}
+        -- | --
+      {% endfor %}
+      </td>
+      <td>
+      {% for p in team|pairings:4 %}
+        {{ p.ballot1_score }} | {{ p.ballot2_score }}
+      {% empty %}
+        -- | --
+      {% endfor %}
+      </td>
+    </tr>
+
+    <tr>
+      <td>Record</td>
+      {% for r in team|record %}
+        <td>{{ r }}</td>
+      {% endfor %}
+    </tr>
+
+    <tr>
+      <td>Running record</td>
+      {% for r in team|record %}
+        <td>{{ r }}</td>
+      {% endfor %}
+    </tr>
+
+    <tr>
+      <td>Running record</td>
+      {% for r in team|running_record %}
+        <td>{{ r }}</td>
+      {% endfor %}
+    </tr>
+
+    <tr>
+      <td>PD</td>
+      {% for r in team|pd %}
+        <td>{{ r }}</td>
+      {% endfor %}
+    </tr>
+
+    <tr>
+      <td>Running PD</td>
+      {% for r in team|running_pd %}
+        <td>{{ r }}</td>
+      {% endfor %}
+    </tr>
+
+    <tr>
+      <td>CS</td>
+      {% for r in team|cs %}
+        <td>{{ r }}</td>
+      {% endfor %}
+    </tr>
+
+    <tr>
+      <td>Running CS</td>
+      {% for r in team|running_cs %}
+        <td>{{ r }}</td>
+      {% endfor %}
+    </tr>
+  </table>
+</div>
+
+<br><br>
+
+{% endblock content %}

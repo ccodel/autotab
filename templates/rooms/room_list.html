@@ -1,0 +1,37 @@
+{% extends '_base.html' %}
+
+{% block content %}
+ 
+  <h2 class="text-center">Create a new room</h2>
+
+  <br>
+
+  <form class="text-center" enctype="multipart/form-data" action="" method ="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="text-center">
+      <button class="btn btn-lg btn-success" type="submit">Create</button>
+    </div>
+  </form>
+
+  <hr>
+
+  {% if room_list|length != 0 %}
+  <table class="text-center" style="margin-left:auto; margin-right:auto;">
+    <tr>
+      <th>Building</th>
+      <th>Room number</th>
+      <th>Display name</th>
+    </tr>
+  {% for room in room_list %}
+    <tr>
+      <td>{{ room.building }}</td>
+      <td>{{ room.room_number }}</td>
+      <td>{{ room.display_name }}</td>
+    </tr>
+  {% endfor %}
+  </table>
+
+  <br><br>
+  {% endif %}
+{% endblock content %}
