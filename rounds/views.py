@@ -85,3 +85,12 @@ class PairingDetailView(DetailView):
                   'pairing': self.pairing,
                   'ranking_list': self.pairing.rankings})
 
+class RankingsView(TemplateView):
+    model = Ranking
+    context_object_name = 'ranking'
+    template_name = 'rounds/rankings.html'
+
+    def get(self, request):
+        rs = Ranking.objects.all().order_by('student')
+        return render(request, self.template_name,
+            {'rankings': rs})

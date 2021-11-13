@@ -33,3 +33,12 @@ def cs(team):
 @register.filter
 def running_cs(team):
     return team.running_cs()
+
+@register.filter
+def total_ranks(ranking):
+    rs = Ranking.objects.filter(student=ranking.student)
+    s = 0
+    for r in rs:
+        s += r.ranks
+
+    return s

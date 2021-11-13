@@ -1,0 +1,34 @@
+{% extends '_base.html' %}
+
+{% load team_tags %}
+
+{% block content %}
+
+<div class=text-center">
+  <h2 class="text-center">Rankings</h2>
+
+  <h4 class="text-center">Sorted by competitor name</h4>
+
+  <hr>
+
+  <table class="text-center" style="margin-left:auto; margin-right:auto;">
+    <tr>
+      <th>School</th>
+      <th>Competitor</th>
+      <th>Round</th>
+      <th>Ranks</th>
+      <th>Total ranks</th>
+    </tr>
+  {% for r in rankings %}
+    <tr>
+      <td>{{ r.team.display_name }}</td>
+      <td>{{ r.student }}</td>
+      <td>{{ r.pairing.round_num }}</td>
+      <td>{{ r.ranks }}</td>
+      <td>{{ r|total_ranks }}</td>
+    </tr>
+  {% endfor %}
+  </table>
+</div>
+
+{% endblock content %}

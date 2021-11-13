@@ -24,12 +24,31 @@
       <th>School name</th>
       <th>Team number</th>
       <th>Display name</th>
+      <th>Record</th>
+      <th>CS</th>
+      <th>PD</th>
+      <th></th>
     </tr>
   {% for team in team_list %}
     <tr>
       <td>{{ team.school_name }}</td>
       <td>{{ team.team_number }}</td>
       <td>{{ team.display_name }}</td>
+      <td>
+        {% for r in team|record %}
+          {{ r }} |
+        {% endfor %}
+      </td>
+      <td>
+        {% for r in team|cs %}
+          {{ r }} |
+        {% endfor %}
+      </td>
+      <td>
+        {% for r in team|pd %}
+          {{ r }} |
+        {% endfor %}
+      </td>
       <td><a class="btn btn-light" href="{{ team.get_absolute_url }}">See more</a>
     </tr>
   {% endfor %}
