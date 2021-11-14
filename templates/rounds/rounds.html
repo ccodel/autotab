@@ -83,6 +83,7 @@
         <th>Def</th>
         <th>Judge 1</th>
         <th>Judge 2</th>
+        <th></th>
       </tr>
 
     {% for p in pairing_list %}
@@ -103,6 +104,9 @@
         {% else %}
         <td>--</td>
         {% endif %}
+        <td>
+          <a class="btn btn-light" href="{{ p.get_absolute_url }}">Edit</a>
+        </td>
       </tr>
     {% endif %}
     {% endfor %}
@@ -127,6 +131,7 @@
         <th>Def</th>
         <th>Judge 1</th>
         <th>Judge 2</th>
+        <th></th>
       </tr>
 
     {% for p in pairing_list %}
@@ -147,6 +152,9 @@
         {% else %}
         <td>--</td>
         {% endif %}
+        <td>
+          <a class="btn btn-light" href="{{ p.get_absolute_url }}">Edit</a>
+        </td>
       </tr>
     {% endif %}
     {% endfor %}
@@ -171,6 +179,7 @@
         <th>Def</th>
         <th>Judge 1</th>
         <th>Judge 2</th>
+        <th></th>
       </tr>
 
     {% for p in pairing_list %}
@@ -191,6 +200,9 @@
         {% else %}
         <td>--</td>
         {% endif %}
+        <td>
+          <a class="btn btn-light" href="{{ p.get_absolute_url }}">Edit</a>
+        </td>
       </tr>
     {% endif %}
     {% endfor %}

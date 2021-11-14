@@ -2,7 +2,6 @@ aniso8601==7.0.0
 appdirs==1.4.4
 asgiref==3.2.10
 attrs==19.3.0
-awap-2021 @ file:///Users/caydencodel/git/awap-2021-ekwel-pai-four-ekwel-slai/dist/awap-2021-0.0.1.tar.gz
 black==19.10b0
 certifi==2020.6.20
 chardet==3.0.4
